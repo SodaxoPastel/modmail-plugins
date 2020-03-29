@@ -21,7 +21,7 @@ class moderation(commands.Cog):
 
     #Purge command
     @commands.command(aliases = ["clear"])
-    @checks.has_permissions(PermissionLevel.SUPPORTER)
+    @checks.has_permissions(PermissionLevel.MODERATOR)
     async def purge(self, ctx, amount = 10):
         max_purge = 2000
         if amount >= 1 and amount <= max_purge:
@@ -64,7 +64,7 @@ class moderation(commands.Cog):
         if isinstance(error, commands.MissingPermissions):
             embed = discord.Embed(
                 title = "Missing Permissions",
-                description = "You are missing the **Supporter** permission level!",
+                description = "You are missing the **Moderator** permission level!",
                 color = self.errorcolor
             )
             await ctx.send(embed = embed, delete_after = 5.0)
